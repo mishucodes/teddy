@@ -42,6 +42,16 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --sh-keyword: #cf222e;
+  --sh-string: #0a3069;
+  --sh-class: #0550ae;
+  --sh-property: #8250df;
+  --sh-entity: #6639ba;
+  --sh-identifier: #1f2328;
+  --sh-sign: #57606a;
+  --sh-comment: #6e7781;
+  --sh-jsxliterals: #116329;
 }
 
 .dark {
@@ -77,6 +87,16 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  --sh-keyword: #ff7b72;
+  --sh-string: #a5d6ff;
+  --sh-class: #79c0ff;
+  --sh-property: #d2a8ff;
+  --sh-entity: #d2a8ff;
+  --sh-identifier: #e6edf3;
+  --sh-sign: #9198a1;
+  --sh-comment: #9198a1;
+  --sh-jsxliterals: #7ee787;
 }
 
 @theme inline {

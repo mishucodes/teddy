@@ -1,4 +1,5 @@
 import { useId } from 'react'
+import { HighlightedJavaScript } from '#/components/ui/code/HighlightedJavaScript'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '#/components/ui/tabs'
 import type { CompiledStages, PlaygroundResult } from '#/types/playground'
 
@@ -62,7 +63,7 @@ export function StageOutput({ result }: StageOutputProps)
         </TabsContent>
 
         <TabsContent value="js" className={panelClassName}>
-          {stages.js ? <pre>{stages.js}</pre> : placeholder}
+          {stages.js ? <HighlightedJavaScript code={stages.js} /> : placeholder}
         </TabsContent>
       </Tabs>
     </section>
