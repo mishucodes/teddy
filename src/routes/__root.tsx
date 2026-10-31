@@ -7,7 +7,10 @@ import {ThemeProvider} from '#/components/ui/theme/theme-provider';
 import {Header} from '#/components/header/Header';
 import {Footer} from '#/components/footer/Footer';
 import {SITE_NAME, SITE_TAGLINE} from '#/constants/site';
-import {APPLE_TOUCH_ICON_SRC, FAVICON_SRC} from '#/constants/images';
+import {APPLE_TOUCH_ICON_SRC, FAVICON_SRC, OG_IMAGE} from '#/constants/images';
+import {author, twitter} from '#/constants/contact';
+import {absoluteURL} from '#/lib/seo';
+import {NotFound} from '#/components/not-found/NotFound';
 
 export const Route = createRootRoute(
     {
@@ -19,6 +22,16 @@ export const Route = createRootRoute(
                         {name: 'viewport', content: 'width=device-width, initial-scale=1'},
                         {title: SITE_NAME},
                         {name: 'description', content: `${SITE_TAGLINE} Write it in the browser and watch it run.`},
+                        {name: 'author', content: author},
+                        {property: 'og:site_name', content: SITE_NAME},
+                        {property: 'og:type', content: 'website'},
+                        {property: 'og:locale', content: 'en_US'},
+                        {property: 'og:image', content: absoluteURL(OG_IMAGE.src)},
+                        {property: 'og:image:width', content: String(OG_IMAGE.width)},
+                        {property: 'og:image:height', content: String(OG_IMAGE.height)},
+                        {property: 'og:image:alt', content: OG_IMAGE.alt},
+                        {name: 'twitter:card', content: 'summary_large_image'},
+                        {name: 'twitter:creator', content: `@${new URL(twitter).pathname.slice(1)}`},
                     ],
                 links:
                     [
@@ -28,6 +41,7 @@ export const Route = createRootRoute(
                     ],
             }),
         shellComponent: RootDocument,
+        notFoundComponent: NotFound,
     });
 
 function RootDocument({children}: {children: React.ReactNode})

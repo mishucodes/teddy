@@ -4,14 +4,15 @@ import { GuideSection } from '#/components/docs-page/GuideSection'
 import { HowItWorksSection } from '#/components/docs-page/HowItWorksSection'
 import { TableOfContents } from '#/components/docs-page/TableOfContents'
 import { SITE_NAME } from '#/constants/site'
+import { pageSEO } from '#/lib/seo'
 
 export const Route = createFileRoute('/docs')({
-  head: () => ({
-    meta: [
-      { title: `Docs · ${SITE_NAME}` },
-      { name: 'description', content: `What ${SITE_NAME} is, how its compiler works, and a guide to the language.` },
-    ],
-  }),
+  head: () =>
+    pageSEO({
+      title: `${SITE_NAME} docs: language guide and how the compiler works`,
+      description: `What ${SITE_NAME} is, how its lexer, parser and transpiler turn code into JavaScript, and a guide to its syntax.`,
+      path: '/docs',
+    }),
   component: DocsPage,
 })
 
