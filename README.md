@@ -107,7 +107,8 @@ npm run dev     # http://localhost:3000
 ```
 
 The playground compiles and runs your code in a Web Worker, which is how it can stop a run that never
-finishes without freezing the page. Press **Run** or <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Enter</kbd>.
+finishes without freezing the page. The output panel shows any of the three stages (**Tokens**, **AST**
+or **JavaScript**), and when compilation fails it still shows the stages that succeeded. Press **Run** or <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Enter</kbd>.
 
 Built with TanStack Start, React, TypeScript, Tailwind and shadcn/ui.
 

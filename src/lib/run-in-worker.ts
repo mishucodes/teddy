@@ -16,7 +16,7 @@ export function runInWorker(sourceCode: string): Promise<PlaygroundResult>
     const timer = setTimeout(() => finish({ status: 'timeout' }), TIMEOUT_IN_MS)
 
     worker.addEventListener('message', (event: MessageEvent<PlaygroundResult>) => finish(event.data))
-    worker.addEventListener('error', (event) => finish({ status: 'compileError', message: event.message }))
+    worker.addEventListener('error', (event) => finish({ status: 'compileError', stages: {}, message: event.message }))
     worker.postMessage(sourceCode)
   })
 }

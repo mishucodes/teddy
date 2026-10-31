@@ -2,6 +2,7 @@ import { useEffect, useId, useState } from 'react'
 import type { KeyboardEvent } from 'react'
 import { Play } from 'lucide-react'
 import { Button } from '#/components/ui/button'
+import { StageOutput } from '#/components/landing-page/StageOutput'
 import { sampleSource } from '#/content/landing-page/sample-source'
 import { runInWorker } from '#/lib/run-in-worker'
 import type { PlaygroundResult } from '#/types/playground'
@@ -12,7 +13,6 @@ export function Playground()
   const [result, setResult] = useState<PlaygroundResult | null>(null)
   const [isRunning, setIsRunning] = useState(false)
   const sourceHeadingID = useId()
-  const jsHeadingID = useId()
   const consoleHeadingID = useId()
 
   useEffect(() =>
@@ -34,7 +34,6 @@ export function Playground()
     void run()
   }
 
-  const js = result && 'js' in result ? result.js : ''
   const logs = result && 'logs' in result ? result.logs : []
 
   return (
@@ -66,16 +65,7 @@ export function Playground()
       </section>
 
       <div className="flex min-w-0 flex-col gap-6">
-        <section className="overflow-hidden rounded-xl border bg-card">
-          <h2 id={jsHeadingID} className="border-b px-4 py-2 text-sm font-semibold">JavaScript</h2>
-          <pre
-            aria-labelledby={jsHeadingID}
-            tabIndex={0}
-            className="max-h-96 overflow-auto p-4 font-mono text-sm leading-6 outline-none focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:ring-inset"
-          >
-            {js || <span className="text-muted-foreground">{result?.status === 'compileError' ? 'Nothing to show — the code didn’t compile.' : '…'}</span>}
-          </pre>
-        </section>
+        <StageOutput result={result} />
 
         <section className="overflow-hidden rounded-xl border bg-card">
           <h2 id={consoleHeadingID} className="border-b px-4 py-2 text-sm font-semibold">Console</h2>

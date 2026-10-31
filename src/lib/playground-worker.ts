@@ -1,12 +1,7 @@
 import { tokeniseThisCode } from './lexer'
 import { parseTheseTokens } from './parser'
 import { convertToJS } from './transpiler'
-import type { PlaygroundResult } from '../types/playground'
-
-function compileThisCode(sourceCode: string): string
-{
-  return convertToJS(parseTheseTokens(tokeniseThisCode(sourceCode)))
-}
+import type { CompiledStages, PlaygroundResult } from '../types/playground'
 
 function formatLogValue(value: unknown): string
 {
@@ -27,25 +22,30 @@ function messageOf(error: unknown): string
 
 function compileAndRun(sourceCode: string): PlaygroundResult
 {
-  let js: string
+  const partialStages: Partial<CompiledStages> = {}
+  let stages: CompiledStages
   try
   {
-    js = compileThisCode(sourceCode)
+    const tokens = tokeniseThisCode(sourceCode)
+    partialStages.tokens = tokens
+    const ast = parseTheseTokens([...tokens])
+    partialStages.ast = ast
+    stages = { tokens, ast, js: convertToJS(ast) }
   }
   catch (error)
   {
-    return { status: 'compileError', message: messageOf(error) }
+    return { status: 'compileError', stages: partialStages, message: messageOf(error) }
   }
 
   const logs: string[] = []
   try
   {
-    runThisCode(js, logs)
-    return { status: 'success', js, logs }
+    runThisCode(stages.js, logs)
+    return { status: 'success', stages, logs }
   }
   catch (error)
   {
-    return { status: 'runtimeError', js, logs, message: messageOf(error) }
+    return { status: 'runtimeError', stages, logs, message: messageOf(error) }
   }
 }
 
