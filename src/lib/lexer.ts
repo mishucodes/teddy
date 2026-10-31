@@ -1,7 +1,22 @@
-export type Tokens = ({type: string, value: string} | {type: string, value: number} | {type: string, name: string, value: string})[];
+type TextTokenType =
+    | "key" | "parameter" | "bindingDeclaration" | "functionDeclaration" | "returnStatement"
+    | "conditionalDeclaration" | "bindingName" | "assignmentOperatorForBindings" | "string" | "templateLiteral"
+    | "beginBlock" | "endBlock" | "beginFunctionDefinition" | "endFunctionDefinition"
+    | "beginObject" | "assignmentOperatorForKeys" | "endObject" | "beginArray" | "endArray"
+    | "commaForParameters" | "commaForArguments" | "comma" | "endOfStatement" | "arithmeticOperator"
+    | "beginParameters" | "endParameters" | "beginArguments" | "endArguments" | "beginLogicalTest" | "endLogicalTest";
+type LogicalOperatorName =
+    | "strictlyNotEqualTo" | "looselyNotEqualTo" | "StrictlyEqualTo" | "looselyEqualTo"
+    | "lessThanOrEqualTo" | "moreThanOrEqualTo" | "lessThan" | "moreThan";
+export type Token =
+    | {type: TextTokenType, value: string}
+    | {type: "number", value: number}
+    | {type: "logicalOperator", name: LogicalOperatorName, value: string};
+export type Tokens = Token[];
+
 export function tokeniseThisCode(codeStr: string): Tokens
 {
-    let tokens = [];
+    let tokens: Tokens = [];
     let cursor = 0;
     while(cursor < codeStr.length)
     {
@@ -140,7 +155,7 @@ export function tokeniseThisCode(codeStr: string): Tokens
         //aj) checking for non-primitive values:
             //aja) objects:
                 //ajaa) checking for the beginning of an object:
-                    if(currentCharacter === "{" && (tokens.length > 0 && !/;|{/.test(tokens[tokens.length - 1].value)))
+                    if(currentCharacter === "{" && (tokens.length > 0 && !/;|{/.test(String(tokens[tokens.length - 1].value))))
                     {
                         tokens.push({type: "beginObject", value: currentCharacter});
                         cursor++;

@@ -1,6 +1,6 @@
-import type {AST} from "./parser";
+import type {ASTNode} from "./parser";
 
-export function convertToJS(AST: AST): any //would fix this
+export function convertToJS(AST: ASTNode): string
 {
     switch (AST.type)
     {
@@ -35,6 +35,7 @@ export function convertToJS(AST: AST): any //would fix this
                     });
                 return retVal + ';';
             }
+            throw new ReferenceError(`${AST.name} is not a built-in function`);
         case "block":
             return AST.code.replace(/suppose/g, "let ").replace(/->/g, " = ").replace(/print/g, "console.log");
     }
