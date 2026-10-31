@@ -4,6 +4,8 @@
 
 A tiny programming language that compiles to JavaScript, with a playground to write and run it in the browser.
 
+**Try it: [try-teddy.vercel.app](https://try-teddy.vercel.app)**
+
 ## About
 
 This project implements a small programming language inspired by the language-building chapter of
