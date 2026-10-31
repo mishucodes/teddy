@@ -5,7 +5,9 @@ import appCss from '../styles.css?url';
 //Components:
 import {ThemeProvider} from '#/components/ui/theme/theme-provider';
 import {Header} from '#/components/header/Header';
+import {Footer} from '#/components/footer/Footer';
 import {SITE_NAME, SITE_TAGLINE} from '#/constants/site';
+import {APPLE_TOUCH_ICON_SRC, FAVICON_SRC} from '#/constants/images';
 
 export const Route = createRootRoute(
     {
@@ -18,7 +20,12 @@ export const Route = createRootRoute(
                         {title: SITE_NAME},
                         {name: 'description', content: `${SITE_TAGLINE} Write it in the browser and watch it run.`},
                     ],
-                links: [{rel: 'stylesheet', href: appCss}],
+                links:
+                    [
+                        {rel: 'stylesheet', href: appCss},
+                        {rel: 'icon', href: FAVICON_SRC, sizes: '48x48'},
+                        {rel: 'apple-touch-icon', href: APPLE_TOUCH_ICON_SRC},
+                    ],
             }),
         shellComponent: RootDocument,
     });
@@ -30,10 +37,11 @@ function RootDocument({children}: {children: React.ReactNode})
             <head>
                 <HeadContent />
             </head>
-            <body>
+            <body className="flex min-h-dvh flex-col">
                 <ThemeProvider defaultTheme="system" storageKey="theme">
                     <Header />
                     {children}
+                    <Footer />
                     <TanStackDevtools config={{position: 'bottom-right'}} plugins={[{name: 'Tanstack Router', render: <TanStackRouterDevtoolsPanel />}]} />
                     <Scripts />
                 </ThemeProvider>

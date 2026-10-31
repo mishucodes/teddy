@@ -1,0 +1,8 @@
+export const author = 'Manish Goyal'
+export const portfolio = 'https://manishgoyal.dev'
+export const whatsapp = '#'
+export const mail = 'manishgoyal5683@gmail.com'
+export const github = 'https://github.com/mishucodes'
+export const linkedIn = 'https://www.linkedin.com/in/manishgoyal-dev/'
+export const twitter = 'https://x.com/mishucodes'
+export const blog = 'https://www.understandingwebdev.com/'

@@ -1,3 +1,5 @@
+<img src="public/teddy-logo-solid.png" alt="" width="96" height="96">
+
 # Teddy
 
 A tiny programming language that compiles to JavaScript, with a playground to write and run it in the browser.
@@ -111,6 +113,12 @@ finishes without freezing the page. The output panel shows any of the three stag
 or **JavaScript**), and when compilation fails it still shows the stages that succeeded. Press **Run** or <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Enter</kbd>.
 
 Built with TanStack Start, React, TypeScript, Tailwind and shadcn/ui.
+
+## Author
+
+Made by Manish Goyal. More of my work at [manishgoyal.dev](https://manishgoyal.dev).
+[GitHub](https://github.com/mishucodes) · [LinkedIn](https://www.linkedin.com/in/manishgoyal-dev/) ·
+[X](https://x.com/mishucodes) · [Blog](https://www.understandingwebdev.com/)
 
 ## References
 
