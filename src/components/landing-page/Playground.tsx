@@ -38,8 +38,8 @@ export function Playground()
   const logs = result && 'logs' in result ? result.logs : []
 
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
-      <section className="flex flex-col overflow-hidden rounded-xl border bg-card">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <section className="flex min-w-0 flex-col overflow-hidden rounded-xl border bg-card">
         <div className="flex items-center justify-between gap-4 border-b px-4 py-2">
           <h2 id={sourceHeadingID} className="text-sm font-semibold">Teddy</h2>
           <div className="flex items-center gap-3">
@@ -65,7 +65,7 @@ export function Playground()
         />
       </section>
 
-      <div className="flex flex-col gap-6">
+      <div className="flex min-w-0 flex-col gap-6">
         <section className="overflow-hidden rounded-xl border bg-card">
           <h2 id={jsHeadingID} className="border-b px-4 py-2 text-sm font-semibold">JavaScript</h2>
           <pre
