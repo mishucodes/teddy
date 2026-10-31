@@ -57,7 +57,14 @@ function LandingPage()
     console.log(output);
     return (
         <main>
-            <h1>Hello World</h1>
+            <div>
+                <h1 className='font-bold text-5xl'>Source Code</h1>
+                <p>{sourceCode}</p>
+            </div>
+            <div>
+                <h1 className='font-bold text-5xl'>Converted Code</h1>
+                <p>{output}</p>
+            </div>
         </main>
     )
 }
