@@ -1,4 +1,5 @@
 <img src="public/teddy-logo-solid.png" alt="" width="96" height="96">
+
 # Teddy
  
 A tiny programming language that compiles to JavaScript, with a playground to write and run it in the browser.
